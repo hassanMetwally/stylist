@@ -31,7 +31,7 @@ class LoginState extends State<SignIn> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade100,
+      //backgroundColor: Colors.grey.shade100,
       body: Container(
         alignment: Alignment.center,
         child: ListView(
