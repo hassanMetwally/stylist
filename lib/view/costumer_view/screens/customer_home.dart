@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:stylist/view/costumer_view/screens/home_tabs/order_screen.dart';
 import 'package:stylist/view/costumer_view/shared_ui/customer_navigation_drawer.dart';
 import 'home_tabs/cart.dart';
 import 'home_tabs/explore.dart';
@@ -58,7 +59,7 @@ class _CustomerHomeState extends State<CustomerHome> with SingleTickerProviderSt
         children: [
           Recommended(),
           Explore(),
-          Cart(),
+          OrderScreen(),
         ],
       ),
       drawer: Theme(
