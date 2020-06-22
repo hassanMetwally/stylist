@@ -19,7 +19,9 @@ class _OrderScreenState extends State<OrderScreen> {
         children: <Widget>[
           Column(
             children: <Widget>[
-              SizedBox(height: 20,),
+              SizedBox(
+                height: 20,
+              ),
               OrderCard(),
               Divider(
                 color: Colors.white,
