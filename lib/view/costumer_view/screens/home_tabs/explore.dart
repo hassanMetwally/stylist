@@ -109,7 +109,7 @@ class _ExploreState extends State<Explore> {
                     height: 25,
                     child: IconButton(
                         padding: EdgeInsets.only(left: 10,top: 4),
-                        iconSize: 22,
+                        iconSize: 18,
                         icon: Icon(
                           Icons.favorite,
                           color: Colors.red,
@@ -121,7 +121,7 @@ class _ExploreState extends State<Explore> {
                     height: 25,
                     child: IconButton(
                       padding: EdgeInsets.only(right: 10,top: 4),
-                        iconSize: 22,
+                        iconSize: 18,
                         icon: Icon(
                           Icons.visibility,
                           color: Colors.blue,

@@ -88,7 +88,7 @@ class LoginState extends State<SignIn> {
                     ),
                     validator: (value) {
                       if (value.isEmpty) {
-                        return "enter your email";
+                        return "enter your password";
                       } else {
                         return null;
                       }
