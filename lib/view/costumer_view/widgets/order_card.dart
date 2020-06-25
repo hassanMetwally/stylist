@@ -5,7 +5,7 @@ class OrderCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding:  EdgeInsets.symmetric(horizontal: 10 , vertical: 10),
+        padding:  EdgeInsets.only(top: 15 , left: 10 , right: 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
@@ -55,21 +55,17 @@ class OrderCard extends StatelessWidget {
                 Text('Girlled Chicken',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,),),
                 SizedBox(height: 5,),
                 Text('3.0',style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold,color: Colors.orangeAccent)),
-                SizedBox(height: 5,),
+               // SizedBox(height: 2,),
                 Container(
                   height: 45,
                   width: 120,
-                  child: ListView(
+                  child: Row(
                     children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          Text('Red',),
-                          SizedBox(width: 5,),
-                          Text('-',),
-                          SizedBox(width: 5,),
-                          Text('XL',),
-                        ],
-                      ),
+                      Text('Red',),
+                      SizedBox(width: 5,),
+                      Text('-',),
+                      SizedBox(width: 5,),
+                      Text('XL',),
                     ],
                   ),
                 ),

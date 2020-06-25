@@ -44,7 +44,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     return Column(
       children: <Widget>[
         Padding(
-          padding: const EdgeInsets.only(top: 70, bottom: 15),
+          padding: const EdgeInsets.only(top: 35, bottom: 15),
           child: Container(
             alignment: Alignment.topCenter,
             decoration: BoxDecoration(
@@ -55,8 +55,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               ),
               //borderRadius: BorderRadiusGeometry()
             ),
-            width: 105,
-            height: 105,
+            width: 95,
+            height: 95,
           ),
         ),
         FlatButton(

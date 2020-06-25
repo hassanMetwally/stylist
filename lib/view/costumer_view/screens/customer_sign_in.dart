@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 import 'customer_home.dart';
 import 'customer_registering.dart';
 
@@ -13,6 +12,7 @@ class SignIn extends StatefulWidget {
 }
 
 class LoginState extends State<SignIn> {
+  final _formKey = GlobalKey<FormState>();
   TextEditingController _userController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -39,57 +39,84 @@ class LoginState extends State<SignIn> {
           children: <Widget>[
             Padding(padding: EdgeInsets.only(top: 50.0)),
             Image.asset(
-              "assets/images/splashLogo.jpeg",
+              "assets/images/logo.png",
               width: 250,
               height: 250,
             ),
-            Padding(padding: EdgeInsets.all(30.0)),
-            TextField(
-              controller: _userController,
-              keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(
-                // border: OutlineInputBorder(),
-                icon: Icon(
-                  Icons.account_circle,
-                  color: Colors.blue,
-                ),
-                labelText: 'user name',
-                hintText: 'phone or email',
-                //     suffixIcon: IconButton(
-                //  icon: Icon(Icons.clear), onPressed: _clearUser)
-              ),
-              //  maxLength: 30,
-            ),
-            Padding(padding: EdgeInsets.all(5.0)),
-            TextField(
-              controller: _passwordController,
-              obscureText: true,
-              decoration: InputDecoration(
-                //  border: OutlineInputBorder(),
-                icon: Icon(
-                  Icons.lock,
-                  color: Colors.blue,
-                ),
-                labelText: 'Password',
-                hintText: 'password',
+            Padding(padding: EdgeInsets.all(40.0)),
+            Form(
+              key: _formKey,
+              child: Column(
+                children: <Widget>[
+                  TextFormField(
+                    controller: _userController,
+                    keyboardType: TextInputType.emailAddress,
+                    decoration: InputDecoration(
+                      // border: OutlineInputBorder(),
+                      icon: Icon(
+                        Icons.account_circle,
+                        color: Colors.blue,
+                      ),
+                      labelText: 'user name',
+                      hintText: 'phone or email',
+                      //     suffixIcon: IconButton(
+                      //  icon: Icon(Icons.clear), onPressed: _clearUser)
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "enter your email";
+                      } else {
+                        return null;
+                      }
+                    },
+                    //  maxLength: 30,
+                  ),
+                  Padding(padding: EdgeInsets.all(5.0)),
+                  TextFormField(
+                    controller: _passwordController,
+                    obscureText: true,
+                    decoration: InputDecoration(
+                      //  border: OutlineInputBorder(),
+                      icon: Icon(
+                        Icons.lock,
+                        color: Colors.blue,
+                      ),
+                      labelText: 'Password',
+                      hintText: 'password',
 //                  suffixIcon: IconButton(
 //                      icon: Icon(Icons.clear), onPressed: _clearPass)
+                    ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "enter your email";
+                      } else {
+                        return null;
+                      }
+                    },
+                    // maxLength: 30,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(17.0),
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: RaisedButton(
+                      child: Text('Log in'),
+                      onPressed: () {
+                        if (_formKey.currentState.validate()) {
+                          Navigator.pop(context);
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return CustomerHome();
+                          }));
+                        }
+                      },
+                      color: Colors.blue,
+                      textColor: Colors.white,
+                    ),
+                  ),
+                ],
               ),
-              // maxLength: 30,
-            ),
-            Padding(
-              padding: EdgeInsets.all(17.0),
-            ),
-            RaisedButton(
-              child: Text('Log in'),
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                  return CustomerHome();
-                }));
-              },
-              color: Colors.blue,
-              textColor: Colors.white,
             ),
             Row(
               //I put this row so 'FlatButton' don't take all the width of 'ListView'
@@ -131,8 +158,7 @@ class LoginState extends State<SignIn> {
               children: <Widget>[
                 FlatButton(
                   child: Text('shop owner?'),
-                  onPressed: () {
-                  },
+                  onPressed: () {},
                   textColor: Colors.blue,
                 )
               ],
@@ -143,4 +169,3 @@ class LoginState extends State<SignIn> {
     );
   }
 }
-

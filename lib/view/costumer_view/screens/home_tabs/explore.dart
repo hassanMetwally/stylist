@@ -95,10 +95,10 @@ class _ExploreState extends State<Explore> {
           child: Column(
             children: <Widget>[
               SizedBox(
-                height: 173,
+                height: MediaQuery.of(context).size.height * .185,
                 child: Image(
                   image: ExactAssetImage("assets/images/placeholder_bg.png"),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
               ),
               Row(
