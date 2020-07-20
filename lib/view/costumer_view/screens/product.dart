@@ -22,7 +22,6 @@ class _ProductState extends State<Product> {
               children: <Widget>[
                 Image.asset(
                   widget.photo,
-                  fit: BoxFit.fill,
                 ),
                 Container(
                   padding: EdgeInsets.only(
@@ -66,12 +65,13 @@ class _ProductState extends State<Product> {
                           ' Description :',
                           style: TextStyle(
                             fontSize: 30,
+                            fontWeight: FontWeight.bold,
                             color: Colors.black38,
                           ),
                         ),
                       ),
                       SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Padding(
                         padding: const EdgeInsets.all(20.0),
@@ -85,7 +85,7 @@ class _ProductState extends State<Product> {
                           textDirection: TextDirection.ltr,
                           style: TextStyle(
                             fontSize: 20.0,
-                            fontWeight: FontWeight.bold,
+
                             color: Colors.black38,
                           ),
                         ),
@@ -191,7 +191,7 @@ class _DropListSizeState extends State<_DropListSize> {
   }
 }
 
-String dropdownValueColor = 'black38';
+String dropdownValueColor = 'white';
 
 class _DropListColor extends StatefulWidget {
   @override
