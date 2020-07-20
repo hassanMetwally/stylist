@@ -1,4 +1,7 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../product.dart';
 
 class Recommended extends StatefulWidget {
   @override
@@ -7,14 +10,15 @@ class Recommended extends StatefulWidget {
 
 class _RecommendedState extends State<Recommended> {
   List<String> photos = [
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png',
-    'assets/images/placeholder_bg.png'
+    "assets/images/1.jpeg",
+    "assets/images/2.jpeg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
   ];
+  List<int> ids = [0, 2, 6];
 
   @override
   Widget build(BuildContext context) {
@@ -22,79 +26,132 @@ class _RecommendedState extends State<Recommended> {
       itemCount: photos.length,
       itemBuilder: (context, position) {
         return InkWell(
-          child: _BuildCard(img: photos[position]),
+          child: _buildCard(position),
+          onDoubleTap: () {
+            if (ids.contains(position)) {
+              ids.remove(position);
+            } else {
+              ids.add(position);
+            }
+            setState(() {});
+            print(ids);
+          },
           onTap: () {
-//            Navigator.push(
-//              context,
-//              MaterialPageRoute(
-//                builder: (context) => Product(
-//                  photo: photos[position],
-//                ),
-//              ),
-//            );
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => Product(
+                  photo: photos[position],
+                ),
+              ),
+            );
           },
         );
       },
     );
   }
-}
 
-class _BuildCard extends StatelessWidget {
-  final String img;
-
-  _BuildCard({this.img});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.all(8.0),
-      child: InkWell(
-        onTap: () {},
-        child: Card(
-
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: 215,
-                child: Image(
-                  image: ExactAssetImage("assets/images/placeholder_bg.png"),
-                  fit: BoxFit.fitWidth,
+  Widget _buildCard(int position) {
+    return Stack(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.all(8.0),
+          child: Card(
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  width: MediaQuery.of(context).size.width,
+                  height: 215,
+                  child: Image(
+                    image: ExactAssetImage(photos[position]),
+                    fit: BoxFit.cover,
+                  ),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  SizedBox(
-                    width: 30,
-                    height: 35,
-                    child: IconButton(
-                        padding: EdgeInsets.only(left: 10,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 30,
+                      height: 35,
+                      child: IconButton(
+                        padding: EdgeInsets.only(
+                          left: 10,
+                        ),
                         iconSize: 18,
                         icon: Icon(
                           Icons.favorite,
-                          color: Colors.red,
                         ),
-                        onPressed: () {}),
-                  ),
-                  SizedBox(
-                    width: 30,
-                    height: 20,
-                    child: IconButton(
-                        padding: EdgeInsets.only(right: 10,),
-                        iconSize: 18,
-                        icon: Icon(
-                          Icons.visibility,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {}),
-                  )
-                ],
+                        onPressed: () {
+                          if (ids.contains(position)) {
+                            ids.remove(position);
+                          } else {
+                            ids.add(position);
+                          }
+                          setState(() {});
+                          print(ids);
+                        },
+                        color: (ids.contains(position))
+                            ? Colors.red
+                            : Colors.black12,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                      height: 20,
+                      child: IconButton(
+                          padding: EdgeInsets.only(
+                            right: 10,
+                          ),
+                          iconSize: 18,
+                          icon: Icon(
+                            Icons.visibility,
+                            color: Colors.blue,
+                          ),
+                          onPressed: () {}),
+                    )
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        Positioned(
+          top: 25,
+          left: 25,
+          child: Row(
+            children: <Widget>[
+              Container(
+                width: 30,
+                height: 30,
+                decoration: BoxDecoration(
+                    shape: BoxShape.circle, //color: Colors.yellow
+                    image: DecorationImage(image: ExactAssetImage("assets/images/10.jpg"))
+                    ),
+              ),
+              SizedBox(
+                width: 6,
+              ),
+              Container(
+                width: 65,
+                height: 24,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromRGBO(0, 0, 0, 0.1),
+                  //image: DecorationImage(image: ExactAssetImage("assets/images/placeholder_bg.png"))
+                ),
+                alignment: Alignment.center,
+                child: Text(
+                  'NIKE',
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white),
+                ),
               )
             ],
           ),
         ),
-      ),
+      ],
     );
   }
 }

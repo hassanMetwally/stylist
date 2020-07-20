@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:stylist/view/costumer_view/screens/home_tabs/order_screen.dart';
 import 'package:stylist/view/costumer_view/shared_ui/customer_navigation_drawer.dart';
-import 'home_tabs/cart.dart';
 import 'home_tabs/explore.dart';
 import 'home_tabs/recommended.dart';
 
@@ -23,6 +22,7 @@ class _CustomerHomeState extends State<CustomerHome> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+       // title: Text("Stylist"),
         actions: <Widget>[
           IconButton(icon: Icon(Icons.search), onPressed: () {}),
           IconButton(icon: Icon(Icons.notifications), onPressed: () {})

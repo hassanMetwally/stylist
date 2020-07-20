@@ -7,6 +7,15 @@ class OrderScreen extends StatefulWidget {
 }
 
 class _OrderScreenState extends State<OrderScreen> {
+  List<String> photos = [
+    "assets/images/1.jpeg",
+    "assets/images/2.jpeg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(

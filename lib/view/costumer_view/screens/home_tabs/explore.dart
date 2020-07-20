@@ -1,12 +1,34 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../product.dart';
+
 class Explore extends StatefulWidget {
   @override
   _ExploreState createState() => _ExploreState();
 }
 
 class _ExploreState extends State<Explore> {
+  List<int> ids = [0, 2, 6];
+  List<String> photos = [
+    "assets/images/1.jpeg",
+    "assets/images/4.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+    "assets/images/4.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/1.jpeg",
+    "assets/images/8.jpg",
+    "assets/images/2.jpeg",
+    "assets/images/3.jpg",
+    "assets/images/4.jpg",
+    "assets/images/6.jpg",
+    "assets/images/7.jpg",
+    "assets/images/8.jpg",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -48,7 +70,6 @@ class _ExploreState extends State<Explore> {
                 "#adidas",
               ),
             ),
-
           ],
         ),
         Row(
@@ -73,9 +94,29 @@ class _ExploreState extends State<Explore> {
   Widget _drawBody() {
     return GridView.builder(
       itemBuilder: (context, position) {
-        return _drawBodyItems();
+        return InkWell(
+            onDoubleTap: () {
+              if (ids.contains(position)) {
+                ids.remove(position);
+              } else {
+                ids.add(position);
+              }
+              setState(() {});
+              print(ids);
+            },
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => Product(
+                    photo: photos[position],
+                  ),
+                ),
+              );
+            },
+            child: _drawBodyItems(position));
       },
-      itemCount: 20,
+      itemCount: photos.length,
       gridDelegate:
           SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
       shrinkWrap: true,
@@ -83,56 +124,103 @@ class _ExploreState extends State<Explore> {
     );
   }
 
-  Widget _drawBodyItems() {
+  Widget _drawBodyItems(int position) {
     return Padding(
       padding: const EdgeInsets.all(9.0),
-      child: InkWell(
-        onTap: () {},
-        child: Card(
-          shape: RoundedRectangleBorder(
-           // borderRadius: BorderRadius.circular(8.0),
-          ),
-          child: Column(
-            children: <Widget>[
-              SizedBox(
-                height: MediaQuery.of(context).size.height * .185,
-                child: Image(
-                  image: ExactAssetImage("assets/images/placeholder_bg.png"),
-                  fit: BoxFit.cover,
+      child: Stack(
+        children: <Widget>[
+          Card(
+            shape: RoundedRectangleBorder(
+                // borderRadius: BorderRadius.circular(8.0),
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  SizedBox(
-                    width: 30,
-                    height: 25,
-                    child: IconButton(
-                        padding: EdgeInsets.only(left: 10,top: 4),
+            child: Column(
+              children: <Widget>[
+                SizedBox(
+                  height: MediaQuery.of(context).size.height * .185,
+                  child: Image(
+                    image: ExactAssetImage(photos[position]),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    SizedBox(
+                      width: 30,
+                      height: 25,
+                      child: IconButton(
+                        padding: EdgeInsets.only(left: 10, top: 4),
                         iconSize: 18,
                         icon: Icon(
                           Icons.favorite,
-                          color: Colors.red,
                         ),
-                        onPressed: () {}),
-                  ),
-                  SizedBox(
-                    width: 30,
-                    height: 25,
-                    child: IconButton(
-                      padding: EdgeInsets.only(right: 10,top: 4),
-                        iconSize: 18,
-                        icon: Icon(
-                          Icons.visibility,
-                          color: Colors.blue,
-                        ),
-                        onPressed: () {}),
-                  )
-                ],
-              )
-            ],
+                        onPressed: () {
+                          if (ids.contains(position)) {
+                            ids.remove(position);
+                          } else {
+                            ids.add(position);
+                          }
+                          setState(() {});
+                          print(ids);
+                        },
+                        color: (ids.contains(position))
+                            ? Colors.red
+                            : Colors.black12,
+                      ),
+                    ),
+                    SizedBox(
+                      width: 30,
+                      height: 25,
+                      child: IconButton(
+                          padding: EdgeInsets.only(right: 10, top: 4),
+                          iconSize: 18,
+                          icon: Icon(
+                            Icons.visibility,
+                            color: Colors.blue,
+                          ),
+                          onPressed: () {}),
+                    )
+                  ],
+                )
+              ],
+            ),
           ),
-        ),
+          Positioned(
+            top: 12.5,
+            left: 12.5,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  width: 19,
+                  height: 19,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.circle, //color: Colors.yellow
+                      image: DecorationImage(image: ExactAssetImage("assets/images/10.jpg"))
+                      ),
+                ),
+                SizedBox(
+                  width: 7,
+                ),
+                Container(
+                  width: 60,
+                  height: 19,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Color.fromRGBO(0, 0, 0, 0.1),
+                  ),
+                  alignment: Alignment.center,
+                  child: Text(
+                    'NIKE',
+                    style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.white),
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
