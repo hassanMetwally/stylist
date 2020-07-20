@@ -55,8 +55,14 @@ class _RecommendedState extends State<Recommended> {
     return Stack(
       children: <Widget>[
         Container(
+          decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                    offset: Offset(0, 8), blurRadius: 24, color: Color(0xFF4056C6).withOpacity(.15))
+              ]),
           margin: EdgeInsets.all(8.0),
           child: Card(
+            color: Color(0xffeef1f8),
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -125,8 +131,8 @@ class _RecommendedState extends State<Recommended> {
                 height: 30,
                 decoration: BoxDecoration(
                     shape: BoxShape.circle, //color: Colors.yellow
-                    image: DecorationImage(image: ExactAssetImage("assets/images/10.jpg"))
-                    ),
+                    image: DecorationImage(
+                        image: ExactAssetImage("assets/images/10.jpg"))),
               ),
               SizedBox(
                 width: 6,

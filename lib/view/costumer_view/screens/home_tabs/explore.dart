@@ -129,60 +129,65 @@ class _ExploreState extends State<Explore> {
       padding: const EdgeInsets.all(9.0),
       child: Stack(
         children: <Widget>[
-          Card(
-            shape: RoundedRectangleBorder(
-                // borderRadius: BorderRadius.circular(8.0),
-                ),
-            child: Column(
-              children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height * .185,
-                  child: Image(
-                    image: ExactAssetImage(photos[position]),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: <Widget>[
-                    SizedBox(
-                      width: 30,
-                      height: 25,
-                      child: IconButton(
-                        padding: EdgeInsets.only(left: 10, top: 4),
-                        iconSize: 18,
-                        icon: Icon(
-                          Icons.favorite,
-                        ),
-                        onPressed: () {
-                          if (ids.contains(position)) {
-                            ids.remove(position);
-                          } else {
-                            ids.add(position);
-                          }
-                          setState(() {});
-                          print(ids);
-                        },
-                        color: (ids.contains(position))
-                            ? Colors.red
-                            : Colors.black12,
-                      ),
+          Container(
+            decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                      offset: Offset(0, 8), blurRadius: 24, color: Color(0xFF4056C6).withOpacity(.15))
+                ]),
+            child: Card(
+              color: Color(0xffeef1f8),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height * .185,
+                    child: Image(
+                      image: ExactAssetImage(photos[position]),
+                      fit: BoxFit.fill,
                     ),
-                    SizedBox(
-                      width: 30,
-                      height: 25,
-                      child: IconButton(
-                          padding: EdgeInsets.only(right: 10, top: 4),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: <Widget>[
+                      SizedBox(
+                        width: 30,
+                        height: 25,
+                        child: IconButton(
+                          padding: EdgeInsets.only(left: 10, top: 4),
                           iconSize: 18,
                           icon: Icon(
-                            Icons.visibility,
-                            color: Colors.blue,
+                            Icons.favorite,
                           ),
-                          onPressed: () {}),
-                    )
-                  ],
-                )
-              ],
+                          onPressed: () {
+                            if (ids.contains(position)) {
+                              ids.remove(position);
+                            } else {
+                              ids.add(position);
+                            }
+                            setState(() {});
+                            print(ids);
+                          },
+                          color: (ids.contains(position))
+                              ? Colors.red
+                              : Colors.black12,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 30,
+                        height: 25,
+                        child: IconButton(
+                            padding: EdgeInsets.only(right: 10, top: 4),
+                            iconSize: 18,
+                            icon: Icon(
+                              Icons.visibility,
+                              color: Colors.blue,
+                            ),
+                            onPressed: () {}),
+                      )
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
           Positioned(
