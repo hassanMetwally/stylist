@@ -57,7 +57,6 @@ class LoginState extends State<SignIn> {
                         Icons.account_circle,
                         color: Colors.blue,
                       ),
-                      labelText: 'user name',
                       hintText: 'phone or email',
                       //     suffixIcon: IconButton(
                       //  icon: Icon(Icons.clear), onPressed: _clearUser)
@@ -81,7 +80,6 @@ class LoginState extends State<SignIn> {
                         Icons.lock,
                         color: Colors.blue,
                       ),
-                      labelText: 'Password',
                       hintText: 'password',
 //                  suffixIcon: IconButton(
 //                      icon: Icon(Icons.clear), onPressed: _clearPass)
