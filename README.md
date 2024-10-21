@@ -1,16 +1,15 @@
-# stylist
+# STYLIST
 
-A new Flutter project.
+Clothes Store Flutter App
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+## App view
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/stylist.mp4)
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200623-201234.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200720-153420.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200720-153428.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200720-153432.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200720-155324.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200720-155623.jpg)
+![Copy of Neon gradient mobile mockup linkedin post ](https://github.com/hassanMetwally/stylist/blob/master/overview/Screenshot_20200721-001700.jpg)
